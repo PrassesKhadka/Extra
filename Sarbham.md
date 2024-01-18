@@ -268,7 +268,7 @@ Output:
 ```
 
 **Reasoning**
-> Here 
+> Here, if the length of the two string is not equal it will return false, if not these two strings will be sorted in it's ascending order and compared, if they are not equal, it will return false else true will be returned.
 
 <br>
 
@@ -297,7 +297,7 @@ Output:
 ```
 
 **Reasoning**
-> Here
+> Here, I have used split to keep each word of the string in an array and then map over this array and reverse each word using split(to split each letter of the word in an array) and then reverse the array and then again join it, to give us the reversed word in an array which is then joined to form the resultant string.
 
 <br>
 
@@ -308,17 +308,7 @@ console.log(multiply(5)(2)(1)) => 10
 ```c
 Solution:
 
-function multiply(x) {
-    // Initial result is the first parameter
-    let result = x;
-    return function innerMultiply(y){
-        result*=y;
-        return function moreInnerMultiply(z){
-            result*=z;
-            return result;
-        }
-    }
-}
+const multiply=num1=>num2=>num3=>num1*num2*num3
 
 console.log(multiply(2)(3)(4));  
 console.log(multiply(5)(2)(1));  
@@ -331,8 +321,18 @@ Output:
 [LOG]: 10 
 ```
 **Reasoning**
-> Here
-
+> Here, I have used currying using ES6 syntax in JavaScript for a more readable code. In this curried version of multiply function, each function takes one argument and returns another function until all the arguments are collected, and the final result is calculated. It is basically doing like the code below :
+> ``` function multiply(x) {
+    let result = x;
+    return function innerMultiply(y){
+        result*=y;
+        return function moreInnerMultiply(z){
+            result*=z;
+            return result;
+        }
+    }
+}
+```
 <br>
 
 ## Q.no.9) Compute asked data from the given array.
@@ -362,7 +362,7 @@ Output:
 ```
 
 **Reasoning**
-> Here
+> Here i have used filtered which results in an array of object whose marks is >60 which is again chained with map which returns an array of name of student who has scored >60 from the previous filter. At last i have joined the string of array together segregating using comma(,) to give the output.
 
 ### b) Print student’s rollNumber along with their student frequency.
 
@@ -370,9 +370,10 @@ Solution:
 ```c
 
 ```
+**Reasoning**
+> The question is unclear.
 
-### c) Print list for students with marks greater than 60 after 20 marks have been added to
-those who scored less than 50.
+### c) Print list for students with marks greater than 60 after 20 marks have been added to those who scored less than 50.
 
 ```c
 student.forEach((obj)=>{
@@ -388,31 +389,32 @@ Output:
 [LOG]: "The names of students who scored more than 60 are:Ram,Henry,John,Robin,Hari,Sara" 
 ```
 **Reasoning**
-> Here
+> Here, I have first updated the student array by adding +20 marks to those student who scored less than 50 using forEach since it doesnot return anything and just iterates over the array and then the new updated student array is filtered to give us the array of students who have scored >60 which is then mapped to return an array of the resultant name . I have used join to join each string/elemen/word in the array and segregate them using ,(comma).
+
+<br>
 
 ## Q.no.10) Write output of the following Promise chains.
 
-### a) Promise.resolve("hello,").then((result) => result + " sarbham")
-.then((result) => console.log(result)).catch((err) =>
-console.error(err));## 
+### a) Promise.resolve("hello,").then((result) => result + " sarbham").then((result) => console.log(result)).catch((err) => console.error(err));
 
 ```c
 hello, sarbham
 ```
+**Reasoning**
+> Here once Promise is resolved, .then is triggered and then result i.e "hello," is concataneted with " sarbham" and when this promise is also resolved, the result is console logged to give us the above output.
 
-### b) Promise.all([Promise.resolve(1), Promise.resolve(2),
-Promise.resolve(3)]).then((results) => console.log(results))
-.catch((err) => console.error(err));## 
+### b) Promise.all([Promise.resolve(1), Promise.resolve(2),Promise.resolve(3)]).then((results) => console.log(results)).catch((err) => console.error(err));
 
 ```c
 [1,2,3]
 ```
+**Reasoning**
+> Here only when all the promises in the array is resolved .then will be trigerred and the resolved value is console.logged by .then which will output the array of resolved promises values.
 
-### c) Promise.race([new Promise((resolve) => { setTimeout(() =>
-resolve(1), 1000); }), Promise.resolve(2), Promise.reject(new
-Error(3))]).then((result) => console.log(result)).catch((err) =>
-console.error(err));## 
+### c) Promise.race([new Promise((resolve) => { setTimeout(() => resolve(1), 1000); }), Promise.resolve(2), Promise.reject(new Error(3))]).then((result) => console.log(result)).catch((err) =>console.error(err));
 
 ```c
 2
 ```
+**Reasoning**
+> The promise which gets resolved first among all the promises in the array will be returned by Promise.race and it' resove value will be then console.logged here 2 will be resolved first and then console.logged which is the result.
