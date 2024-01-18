@@ -7,8 +7,7 @@ Input: Can AlphaGamma Tech => Output: Can A. Tech**
 
 Solution: 
 
-<div style="color: blue;">
-```
+```c
 function outputString(inputString:string,n=10) {
     const wordsArray = inputString.split(' ');
 
@@ -49,7 +48,6 @@ console.log(`Input: ${inputStr3} => Output: ${outputStr3}`);
 console.log(`Input: ${inputStr4} => Output: ${outputStr4}`);
 console.log(`Input: ${inputStr5} => Output: ${outputStr5}`);
 ```
-</div>
 
 Output: 
 ```
