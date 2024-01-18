@@ -1,9 +1,9 @@
-Q.no.2)  Write a program that abbreviates the string when the length is greater than
+**Q.no.2)  Write a program that abbreviates the string when the length is greater than
 16 in a way that fulfills the following requirements:
 Input: Sarbham Technology => Output: Sarbham T.
 Input: Kathmandu Metropolitan City => Output: Kathmandu M. C.
 Input: James Bond => Output: James Bond
-Input: Can AlphaGamma Tech => Output: Can A. Tech
+Input: Can AlphaGamma Tech => Output: Can A. Tech**
 
 Solution: 
 
@@ -61,11 +61,11 @@ Output:
 Reasoning:
 - I have used recursive solution to this,which can be optimized using memoisation but since this is a simple algorithm, such optimisation is actually not needed and would be regarded as overengineering the solution in my opinion. I had to use the n/2 thing because if after shortening the first time, if the length of the total string is still >16 then we will have to shorten the word which is less then 10 since n=10 by default, this will continue until the total string is less than 16.
 
-Q.no.3) Get an array of ids in ascending order based on the total sum of sales for
+**Q.no.3) Get an array of ids in ascending order based on the total sum of sales for
 each id from the data below.
 [{id:am, info:{ sales:{ pen:10; marker:25 }}},
 {id:sar, info:{ sales:{ pen:30; marker:15 }}},
-{id:bh, info:{ sales:{ pen:25; marker:15 }}}]
+{id:bh, info:{ sales:{ pen:25; marker:15 }}}]**
 
 Solution:
 
@@ -102,8 +102,8 @@ Reasoning:
 
 - I first captured the id as key and the total sales as the respective value of id through sums object and then captured the key 
 
-Q.no.4) Find the pairs of array element for which sum is equal to given target value (Two Sum Problem)
-Target value : 7
+**Q.no.4) Find the pairs of array element for which sum is equal to given target value (Two Sum Problem)
+Target value : 7**
 
 Solution:
 ```
@@ -140,6 +140,201 @@ Reasoning:
 
 - I have opted to use Set here to store unique values and it's average time complexity for it's operation is O(1)
 
+**Q.no.5) Remove duplicates from an array and return unique values of that array and
+also array of all duplicates.
+Array: [5, 5, 1, 2, 3, 4, 6, 4, 7, 7, 8, 9, 10, 11, 9]**
 
+Solution:
+```
+function removeDuplicates(data) {
+    const uniqueValues = [];
+    const duplicates = [];
 
+    const uniqueSet = new Set();
 
+    for (const value of data) {
+        if (uniqueSet.has(value)) {
+            duplicates.push(value);
+        } else {
+            uniqueValues.push(value);
+            uniqueSet.add(value);
+        }
+    }
+
+    return {
+        uniqueValues,
+        duplicates
+    };
+}
+
+const data= [5, 5, 1, 2, 3, 4, 6, 4, 7, 7, 8, 9, 10, 11, 9];
+const result = removeDuplicates(data);
+
+console.log("Duplicates:", result.duplicates);
+console.log("Unique Values:", result.uniqueValues);
+```
+Output:
+```
+[LOG]: "Unique Values:",  [5, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11] 
+[LOG]: "Duplicates:",  [5, 4, 7, 9] 
+```
+
+**Q.no.6) Check if two strings are anagrams of each other.
+E.g. tuna is anagram of aunt.**
+
+Solution:
+```
+function isAnagram(str1:string,str2:string){
+    if(str1.length!=str2.length)
+        return -1;
+
+    const sortedStr1=str1.split("").sort().join("")
+    const sortedStr2=str2.split("").sort().join("")
+
+    console.log(sortedStr1 + " and " + sortedStr2)
+
+    if(sortedStr1!=sortedStr2)
+        return -1;
+
+    return 1
+}
+
+const result=isAnagram("tuna","aunt")
+console.log(result)
+```
+
+Output:
+```
+[LOG]: "antu and antu" 
+[LOG]: 1 
+```
+
+**Q.no.7) Write a program to reverse words in a given sentence.
+E.g. Hi, sarbham => ,ih mahbras.**
+
+Solution:
+```
+function getReverse(str:string){
+    const strArray=str.split(" ")
+    const reverseArray=strArray.map((word:string)=>word.split("").reverse().join(""))
+    const reverseString=reverseArray.join(" ")
+    return reverseString;
+}
+
+const str="Hi, sarbham"
+const result=getReverse(str);
+console.log(`The reverse string for ${str} is: ` + result)
+```
+
+Output:
+```
+[LOG]: "The reverse string for Hi, sarbham is: ,iH mahbras" 
+```
+
+**Q.no.8) Write a multiply function which outputs the result as shown below with 3
+given parameters in 3 function calls.
+E.g. console.log(multiply(2)(3)(4)) => 24
+console.log(multiply(5)(2)(1)) => 10**
+
+Solution:
+```
+function multiply(x) {
+    // Initial result is the first parameter
+    let result = x;
+    return function innerMultiply(y){
+        result*=y;
+        return function moreInnerMultiply(z){
+            result*=z;
+            return result;
+        }
+    }
+}
+
+console.log(multiply(2)(3)(4));  
+console.log(multiply(5)(2)(1));  
+```
+
+Output:
+```
+[LOG]: 24 
+[LOG]: 10 
+```
+
+**Q.no.9) Compute asked data from the given array.**
+```
+let student =[
+{name:"Ram",age:16,marks:80},
+{name:"Henry",age:15,marks:69},
+{name:"John",age:16,marks:35},
+{name:"Robin",age:14,marks:45},
+{name:"Hari",age:13,marks:65},
+{name:"Sara",age:15,marks:72},
+];
+```
+Solution:
+
+**a) Print the names of students who scored more than 60**
+
+Solution:
+```
+const result=student.filter((obj)=>obj.marks>60).map((filteredData)=>filteredData.name)
+console.log("The names of students who scored more than 60 are:" + result.join(","))
+```
+Output:
+```
+[LOG]: "The names of students who scored more than 60 are:Ram,Henry,Hari,Sara"
+```
+
+**b) Print student’s rollNumber along with their student frequency.**
+
+Solution:
+```
+
+```
+
+**c) Print list for students with marks greater than 60 after 20 marks have been added to
+those who scored less than 50.**
+
+Solution:
+```
+student.forEach((obj)=>{
+    if(obj.marks<50)
+        obj.marks+=60
+})
+const result=student.filter((obj)=>obj.marks>60).map((filteredData)=>filteredData.name)
+console.log("The names of students who scored more than 60 are:" +result.join(","))
+```
+Output:
+```
+[LOG]: "The names of students who scored more than 60 are:Ram,Henry,John,Robin,Hari,Sara" 
+```
+
+**Q.no.10) Write output of the following Promise chains.**
+
+**a) Promise.resolve("hello,").then((result) => result + " sarbham")
+.then((result) => console.log(result)).catch((err) =>
+console.error(err));**
+
+Solution:
+```
+hello, sarbham
+```
+
+**b) Promise.all([Promise.resolve(1), Promise.resolve(2),
+Promise.resolve(3)]).then((results) => console.log(results))
+.catch((err) => console.error(err));**
+
+Solution:
+```
+[1,2,3]
+```
+
+**c) Promise.race([new Promise((resolve) => { setTimeout(() =>
+resolve(1), 1000); }), Promise.resolve(2), Promise.reject(new
+Error(3))]).then((result) => console.log(result)).catch((err) =>
+console.error(err));**
+
+Solution:
+```
+2
+```
