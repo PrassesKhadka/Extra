@@ -5,9 +5,9 @@ Input: Kathmandu Metropolitan City => Output: Kathmandu M. C.
 Input: James Bond => Output: James Bond
 Input: Can AlphaGamma Tech => Output: Can A. Tech**
 
-Solution: 
-
 ```c
+Solution:
+
 function outputString(inputString:string,n=10) {
     const wordsArray = inputString.split(' ');
 
@@ -49,8 +49,9 @@ console.log(`Input: ${inputStr4} => Output: ${outputStr4}`);
 console.log(`Input: ${inputStr5} => Output: ${outputStr5}`);
 ```
 
-Output: 
-```
+```c
+Output:
+
 [LOG]: "Input: Sarbham Technology => Output: Sarbham T." 
 [LOG]: "Input: Kathmandu Metropolitan City => Output: Kathmandu M. C." 
 [LOG]: "Input: James Bond => Output: James Bond" 
@@ -67,9 +68,10 @@ each id from the data below.
 {id:sar, info:{ sales:{ pen:30; marker:15 }}},
 {id:bh, info:{ sales:{ pen:25; marker:15 }}}]**
 
+
+```c
 Solution:
 
-```
 const data = [
     { id: 'am', info: { sales: { pen: 10, marker: 25 } } },
     { id: 'sar', info: { sales: { pen: 30, marker: 15 } } },
@@ -92,9 +94,10 @@ const sortedIds = getResult(data);
 console.log("Sorted Ids based on total sum of sales:", sortedIds);
 ```
 
+
+```c
 Output:
 
-```
 [LOG]: "Sorted Ids based on total sum of sales:",  ["am", "bh", "sar"] 
 ```
 
@@ -105,8 +108,9 @@ Reasoning:
 **Q.no.4) Find the pairs of array element for which sum is equal to given target value (Two Sum Problem)
 Target value : 7**
 
+```c
 Solution:
-```
+
 function getResult(data, target) {
     const result = [];
     const seenElements = new Set();
@@ -131,8 +135,9 @@ const resultPair = getResult(data, target);
 console.log(`Resultant pair for target : ${target} is`, resultPair);
 ```
 
+```c
 Output:
-```
+
 [LOG]: "Resultant pair for target : 7 is",  [[3, 4], [2, 5], [1, 6]] 
 ```
 
@@ -144,8 +149,9 @@ Reasoning:
 also array of all duplicates.
 Array: [5, 5, 1, 2, 3, 4, 6, 4, 7, 7, 8, 9, 10, 11, 9]**
 
+```c
 Solution:
-```
+
 function removeDuplicates(data) {
     const uniqueValues = [];
     const duplicates = [];
@@ -173,8 +179,10 @@ const result = removeDuplicates(data);
 console.log("Duplicates:", result.duplicates);
 console.log("Unique Values:", result.uniqueValues);
 ```
+
+```c
 Output:
-```
+
 [LOG]: "Unique Values:",  [5, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11] 
 [LOG]: "Duplicates:",  [5, 4, 7, 9] 
 ```
@@ -182,8 +190,9 @@ Output:
 **Q.no.6) Check if two strings are anagrams of each other.
 E.g. tuna is anagram of aunt.**
 
+```c
 Solution:
-```
+
 function isAnagram(str1:string,str2:string){
     if(str1.length!=str2.length)
         return -1;
@@ -203,8 +212,9 @@ const result=isAnagram("tuna","aunt")
 console.log(result)
 ```
 
+```c
 Output:
-```
+
 [LOG]: "antu and antu" 
 [LOG]: 1 
 ```
@@ -212,8 +222,9 @@ Output:
 **Q.no.7) Write a program to reverse words in a given sentence.
 E.g. Hi, sarbham => ,ih mahbras.**
 
+```c
 Solution:
-```
+
 function getReverse(str:string){
     const strArray=str.split(" ")
     const reverseArray=strArray.map((word:string)=>word.split("").reverse().join(""))
@@ -226,8 +237,9 @@ const result=getReverse(str);
 console.log(`The reverse string for ${str} is: ` + result)
 ```
 
+```c
 Output:
-```
+
 [LOG]: "The reverse string for Hi, sarbham is: ,iH mahbras" 
 ```
 
@@ -236,8 +248,9 @@ given parameters in 3 function calls.
 E.g. console.log(multiply(2)(3)(4)) => 24
 console.log(multiply(5)(2)(1)) => 10**
 
+```c
 Solution:
-```
+
 function multiply(x) {
     // Initial result is the first parameter
     let result = x;
@@ -254,8 +267,9 @@ console.log(multiply(2)(3)(4));
 console.log(multiply(5)(2)(1));  
 ```
 
+```c
 Output:
-```
+
 [LOG]: 24 
 [LOG]: 10 
 ```
@@ -275,28 +289,28 @@ Solution:
 
 **a) Print the names of students who scored more than 60**
 
-Solution:
-```
+```c
 const result=student.filter((obj)=>obj.marks>60).map((filteredData)=>filteredData.name)
 console.log("The names of students who scored more than 60 are:" + result.join(","))
 ```
+
+```c
 Output:
-```
+
 [LOG]: "The names of students who scored more than 60 are:Ram,Henry,Hari,Sara"
 ```
 
 **b) Print student’s rollNumber along with their student frequency.**
 
 Solution:
-```
+```c
 
 ```
 
 **c) Print list for students with marks greater than 60 after 20 marks have been added to
 those who scored less than 50.**
 
-Solution:
-```
+```c
 student.forEach((obj)=>{
     if(obj.marks<50)
         obj.marks+=60
@@ -304,8 +318,9 @@ student.forEach((obj)=>{
 const result=student.filter((obj)=>obj.marks>60).map((filteredData)=>filteredData.name)
 console.log("The names of students who scored more than 60 are:" +result.join(","))
 ```
+```c
 Output:
-```
+
 [LOG]: "The names of students who scored more than 60 are:Ram,Henry,John,Robin,Hari,Sara" 
 ```
 
@@ -315,8 +330,7 @@ Output:
 .then((result) => console.log(result)).catch((err) =>
 console.error(err));**
 
-Solution:
-```
+```c
 hello, sarbham
 ```
 
@@ -324,8 +338,7 @@ hello, sarbham
 Promise.resolve(3)]).then((results) => console.log(results))
 .catch((err) => console.error(err));**
 
-Solution:
-```
+```c
 [1,2,3]
 ```
 
@@ -334,7 +347,6 @@ resolve(1), 1000); }), Promise.resolve(2), Promise.reject(new
 Error(3))]).then((result) => console.log(result)).catch((err) =>
 console.error(err));**
 
-Solution:
-```
+```c
 2
 ```
