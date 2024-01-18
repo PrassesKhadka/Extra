@@ -68,8 +68,7 @@ function outputString(inputString:string,n=10) {
             return word; 
         if(word.length<n)
                return word;
-        else
-            return word.substring(0,1) + "."
+        return word.substring(0,1) + "."
 
     })
 
@@ -107,6 +106,7 @@ Output:
 
 **Reasoning:**
 > I have used recursive solution to this,which can be optimized using memoisation but since this is a simple algorithm, such optimisation is actually not needed and would be regarded as overengineering the solution in my opinion. I had to use the n/2 thing because if after shortening the first time, if the length of the total string is still >16 then we will have to shorten the word which is less then 10 since n=10 by default, this will continue until the total string is less than 16.
+> Also i have not used the nested if else if block but rather chosen a cleaner and more readable approach like above.
 
 <br>
 
@@ -120,35 +120,28 @@ each id from the data below.
 Solution:
 
 const data = [
-    { id: 'am', info: { sales: { pen: 10, marker: 25 } } },
-    { id: 'sar', info: { sales: { pen: 30, marker: 15 } } },
-    { id: 'bh', info: { sales: { pen: 25, marker: 15 } } }
+    { id: "am", info: { sales: { pen: 10, marker: 25 } } },
+    { id: "sar", info: { sales: { pen: 30, marker: 15 } } },
+    { id: "bh", info: { sales: { pen: 25, marker: 15 } } }
 ];
 
-function getResult(data) {
-    const sums = {};
-    data.forEach(item => {
-        const id = item.id;
-        const sales = Object.values(item.info.sales);
-        sums[id] = sales.reduce((pen, marker) => pen + marker, 0);
-    });
+const totalSales = data.map(item => ({
+    id: item.id,
+    totalSales: Object.values(item.info.sales).reduce((acc, sale) => acc + sale, 0)
+}));
 
-    const result = Object.keys(sums).sort((a, b) => sums[a] - sums[b]);
-    return result;
-}
-
-const sortedIds = getResult(data);
-console.log("Sorted Ids based on total sum of sales:", sortedIds);
+const sortedIds = totalSales.sort((a, b) => a.totalSales - b.totalSales).map(item => item.id);
+console.log("Sorted ids based on total sales:" + sortedIds.join(,);
 ```
 ```c
 Output:
 
-[LOG]: "Sorted Ids based on total sum of sales:",  ["am", "bh", "sar"] 
+[LOG]: "Sorted ids based on total sales:am,bh,sar" 
 ```
 
 **Reasoning:**
 
-> I first captured the id as key and the total sales as the respective value of id through sums object and then captured the key 
+> I used the map function to create a new array totalSales. For each element in the original data array, it calculates the total sales by summing up the values in the sales object using reduce. The result is an array of objects containing id and totalSales properties.The sort function is then applied to the totalSales array, ordering the objects based on the totalSales property in ascending order.Another map operation is performed to extract only the id values from the sorted array, resulting in output.
 
 <br>
 
@@ -189,7 +182,7 @@ Output:
 
 **Reasoning:**
 
-> I have opted to use Set here to store unique values and it's average time complexity for it's operation is O(1)
+> I have opted to use Set here to store unique values and it's average time complexity for it's operation is O(1).For each element num, i have calculated the complement by subtracting num from the target value. The complement is the value that, when added to num, results in the target value.Then we check for Complement in Set:If the complement is found in the seenElements set, it means a pair has been found, and that pair is added to the result array.Regardless of whether a pair is found or not, the current num is added to the seenElements set to ensure it's available for future iterations.
 
 <br>
 
@@ -234,7 +227,7 @@ Output:
 [LOG]: "Duplicates:",  [5, 4, 7, 9] 
 ```
 **Reasoning**
-> I have opted to use Set here to store unique values and it's average time complexity for it's operation is O(1)
+> I have opted to use Set here to store unique values and it's average time complexity for it's operation is O(1).For each value,we check whether the value is already present in the uniqueSet or not.If it is present, the value is a duplicate, and it is added to the duplicates array.If it is not present, the value is unique, and it is added to both the uniqueValues array and the uniqueSet.Then we get the resultant output.
 
 <br>
 
